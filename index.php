@@ -28,12 +28,6 @@ with this program; if not, write to the Free Software Foundation, Inc.,
   <link rel="stylesheet" href="css/signin.css">
 </head>
 <body>
-  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
-
-  <script src="js/signin.js"></script>
-
   <div class="container" ng-controller="SigninController">
     <h1 class="text-center">Pressbreak</h1>
     <form class="form-signin">
@@ -52,8 +46,13 @@ with this program; if not, write to the Free Software Foundation, Inc.,
         <button class="btn btn-lg btn-primary btn-block" ng-click="submit(user)" type="submit">Sign in</button>
     </form>
   </div>
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="vendor/angularjs/angular.min.js"></script>
+
+  <script src="js/signin.js"></script>
 
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  <script src="vendor/ie-viewport/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
