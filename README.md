@@ -1,8 +1,8 @@
 # Pressbreak
-The Wordpress deployment platform
+A simple Wordpress deployment platform
 
 ## Mission Statement
-The goal of Pressbreak is to provide an easy to use automated deployment platform for Wordpress developers while keeping the number of dependancies to a minimum.
+Pressbreak aims to provide a very simple interface for deploying Wordpress sites. The goal is to keep the number of dependencies to a minimum and be able to run on simple hosting providers that only provide CPanel access.
 
 ## Target Audience
-Pressbreak is intended for Wordpress developers who either work on a development copy of their sites locally or have their own, seperate hosting from production.
+Pressbreak is intended for Wordpress developers who work in simple hosting environments.
