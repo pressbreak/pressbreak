@@ -34,8 +34,10 @@ Helper::initPage();
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="vendor/angularjs/angular.min.js"></script>
   <script src="vendor/angularjs/angular-route.min.js"></script>
+  <script src="vendor/angularjs/angular-resource.min.js"></script>
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
+  <script src="js/services.js"></script>
 <body>
   <div class="container">
     <div class="header clearfix">
@@ -52,7 +54,9 @@ Helper::initPage();
     <div ng-view></div>
 
     <footer class="footer">
-      <p>Pressbreak | <a href="https://github.com/pressbreak/pressbreak">Github</a></p>
+      <p>
+        Pressbreak | Available on <a href="https://github.com/pressbreak/pressbreak">Github</a> | Licensed <a href="https://www.gnu.org/licenses/gpl-2.0.html">GPLv2</a>
+      </p>
     </footer>
 
   </div> <!-- /container -->
