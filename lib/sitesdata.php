@@ -1,5 +1,6 @@
+<?php
 /*
-Pressbreak
+Pressbreak - sign-in logic
 Copyright (C) 2015  Garrett Grice <ggrice@gmail.com>
 
 This program is free software; you can redistribute it and/or modify
@@ -17,33 +18,45 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-var pressbreakControllers = angular.module('pressbreakControllers', []);
 
-pressbreakControllers.controller('SitesController', ['$scope', 'SiteList',
-  function($scope, SiteList) {
-    var sites = SiteList.query();
-    if(sites == "") {
-      $scope.noSitesFound = true;
+/**
+ * Site Data
+ */
+abstract class SiteDataClass {
+  var $data = NULL;
+
+  abstract public function open($settings);
+
+  public function toJSON() {
+    if($data == NULL) {
+      return json_encode(array());
+    } 
+    return json_encode($data);
+  }
+}
+
+/**
+ * Get site data from the file
+ */
+class SiteFile extends SiteDataClass {
+
+  public function open($settings)
+  {
+    $raw = file_get_contents($settings['file']);
+    if($raw === FALSE) {
+      return FALSE;
     }
 
-    
-  }]);
-
-pressbreakControllers.controller('NavController', ['$scope', '$location',
-  function($scope, $location) {
-    $scope.getClass = function(path) {
-      if(path === '/sites') {
-        if($location.path() === '/sites') {
-          return "active";
-        } else {
-          return "";
-        }
-      }
-
-      if ($location.path().substr(0, path.length) === path) {
-        return "active";
-      } else {
-        return "";
-      }
+    $result = json_decde($raw);
+    if($result == NULL) {
+      return FALSE;
     }
-  }]);
+
+    $this->data = $result;
+    return TRUE;
+  }
+
+}
+
+
+ ?>

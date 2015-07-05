@@ -1,5 +1,6 @@
+<?php
 /*
-Pressbreak
+Pressbreak - sign-in logic
 Copyright (C) 2015  Garrett Grice <ggrice@gmail.com>
 
 This program is free software; you can redistribute it and/or modify
@@ -16,29 +17,21 @@ You should have received a copy of the GNU General Public License along
 with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
+error_reporting(0);
 
-var pressbreakApp = angular.module('pressbreakApp', [
-  'ngRoute',
-  'pressbreakControllers',
-  'pressbreakServices'
-]);
+require_once('lib/helpers.php');
+Helper::initPage();
 
-pressbreakApp.config(['$routeProvider',
-  function($routeProvider) {
-    $routeProvider.
-      when('/sites', {
-        templateUrl: 'partials/sites.html',
-        controller: 'SitesController'
-      }).
-      when('/sites/scan', {
-        templateUrl: 'partials/scan.html',
-        controller: 'ScanController'
-      }).
-      when('/sites/:id/deploy', {
-        templateUrl: 'partials/site-deploy.html',
-        controller: 'DeployController'
-      }).
-      otherwise({
-        redirectTo: '/sites'
-      });
-}]);
+require_once('lib/sitesdata.php');
+
+header('Content-Type: application/json');
+
+$dataObject = new SiteFile;
+
+$settings['file'] = 'data/sites.json';
+$result = $dataObject->open($settings);
+
+
+echo $dataObject->toJSON();
+
+?>
