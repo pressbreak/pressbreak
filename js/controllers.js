@@ -23,3 +23,22 @@ pressbreakControllers.controller('SitesController', ['$scope', '$http',
   function($scope, $http) {
     // code
   }]);
+
+pressbreakControllers.controller('NavController', ['$scope', '$location',
+  function($scope, $location) {
+    $scope.getClass = function(path) {
+      if(path === '/sites') {
+        if($location.path() === '/sites') {
+          return "active";
+        } else {
+          return "";
+        }
+      }
+
+      if ($location.path().substr(0, path.length) === path) {
+        return "active";
+      } else {
+        return "";
+      }
+    }
+  }]);

@@ -39,10 +39,10 @@ Helper::initPage();
 <body>
   <div class="container">
     <div class="header clearfix">
-      <nav>
+      <nav ng-controller="NavController">
         <ul class="nav nav-pills pull-right">
-          <li role="presentation" class="active"><a href="#">Home</a></li>
-          <li role="presentation"><a href="#">About</a></li>
+          <li role="presentation" ng-class="getClass('/sites')"><a href="#/">Home</a></li>
+          <li role="presentation" ng-class="getClass('/sites/scan')"><a href="#/sites/scan">Update Sites</a></li>
           <li role="presentation"><a href="signout.php">Sign Out</a></li>
         </ul>
       </nav>

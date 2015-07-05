@@ -29,7 +29,11 @@ pressbreakApp.config(['$routeProvider',
         templateUrl: 'partials/sites.html',
         controller: 'SitesController'
       }).
-      when('sites/:id/deploy', {
+      when('/sites/scan', {
+        templateUrl: 'partials/scan.html',
+        controller: 'ScanController'
+      }).
+      when('/sites/:id/deploy', {
         templateUrl: 'partials/site-deploy.html',
         controller: 'DeployController'
       }).
