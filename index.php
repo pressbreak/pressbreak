@@ -31,6 +31,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
   <div class="container" ng-controller="SigninController">
     <h1 class="text-center">Pressbreak</h1>
     <form class="form-signin">
+        <div class="alert alert-warning" ng-show="msgLoggedOut" role="alert">
+          You have been successfully signed out.
+        </div>
         <div class="alert alert-danger" ng-init="msgLoginFailed=false" ng-show="msgLoginFailed" role="alert">
           {{msgLoginFailed_message}}
         </div>

@@ -17,11 +17,20 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+}
+
 var signinApp = angular.module('signinApp', []);
 
 signinApp.controller('SigninController', ['$scope', '$http', function($scope, $http) {
   $scope.msgLoginFailed = false;
   $scope.msgLoginFailed_message = "";
+  if(getURLParameter('signed_out') == '1') {
+    $scope.msgLoggedOut = true;
+  } else {
+    $scope.msgLoggedOut = false;
+  }
 
   $scope.submit = function(user) {
     $http({

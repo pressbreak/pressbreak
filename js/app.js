@@ -25,15 +25,15 @@ var pressbreakApp = angular.module('pressbreakApp', [
 pressbreakApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/instances', {
-        templateUrl: 'partials/instances.html',
-        controller: 'InstanceController'
+      when('/sites', {
+        templateUrl: 'partials/sites.html',
+        controller: 'SitesController'
       }).
-      when('instances/:id/deploy', {
-        templateUrl: 'partials/deploy.html',
+      when('sites/:id/deploy', {
+        templateUrl: 'partials/site-deploy.html',
         controller: 'DeployController'
       }).
       otherwise({
-        redirectTo: '/instances'
+        redirectTo: '/sites'
       });
 }]);

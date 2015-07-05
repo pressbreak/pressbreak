@@ -18,3 +18,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 */
 
 var pressbreakControllers = angular.module('pressbreakControllers', []);
+
+pressbreakControllers.controller('SitesController', ['$scope', '$http',
+  function($scope, $http) {
+    // code
+  }]);
