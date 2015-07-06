@@ -33,6 +33,7 @@ signinApp.controller('SigninController', ['$scope', '$http', function($scope, $h
   }
 
   $scope.submit = function(user) {
+    /* TODO: make this into a service later */
     $http({
       method:   'POST',
       url:      'api-signin.php',

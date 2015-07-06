@@ -42,3 +42,14 @@ pressbreakApp.config(['$routeProvider',
         redirectTo: '/sites'
       });
 }]);
+
+
+/* TODO: make this more Angular? I mean, this works fine, so..  *shrug* */
+$(document).on('ready', function() {
+  $('.back-to-top').on('click', function(event) {
+    duration = 250;
+    event.preventDefault();
+    $('html, body').animate({scrollTop: 0}, duration);
+    return false;
+  });
+});

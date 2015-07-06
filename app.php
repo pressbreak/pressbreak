@@ -56,6 +56,7 @@ Helper::initPage();
     <footer class="footer">
       <p>
         Pressbreak | Available on <a href="https://github.com/pressbreak/pressbreak">Github</a> | Licensed <a href="https://www.gnu.org/licenses/gpl-2.0.html">GPLv2</a>
+        <span class="pull-right"><a href="#" class="back-to-top"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> Back to top</a></span>
       </p>
     </footer>
 
