@@ -10,3 +10,14 @@ pressbreakServices.factory('SiteList', ['$resource',
       }
     });
   }]);
+
+pressbreakServices.factory('PathList', ['$resource',
+  function($resource) {
+    return $resrouce('api-pathlist.php', {}, {
+      query: {
+        method: 'GET',
+        params: {},
+        isArray: true
+      }
+    });
+  }]);

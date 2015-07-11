@@ -57,6 +57,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
   }
 
   /* load user/config file */
+  /* TODO: replace this with the Config class */
   $config = Spyc::YAMLLoad('config.yml');
   if(!$config) {
     $return_result = array(
