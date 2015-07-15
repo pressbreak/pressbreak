@@ -11,13 +11,13 @@ pressbreakServices.factory('SiteList', ['$resource',
     });
   }]);
 
-pressbreakServices.factory('PathList', ['$resource',
+pressbreakServices.factory('ScanInstallations', ['$resource',
   function($resource) {
-    return $resrouce('api-pathlist.php', {}, {
+    return $resource('api-scanpaths.php', {}, {
       query: {
         method: 'GET',
         params: {},
-        isArray: true
+        isArray: false
       }
     });
   }]);

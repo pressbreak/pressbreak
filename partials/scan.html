@@ -1,5 +1,24 @@
 <div class="row marketing">
 
-  <p class="bg-primary" style="padding: 15px;1"><i class="fa fa-refresh fa-spin"></i> Now scanning configured paths for Wordpress installations...</p>
+  <p class="bg-primary" ng-show="showScanningMessage" style="padding: 15px;"><i class="fa fa-refresh fa-spin"></i> Now scanning configured paths for Wordpress installations...</p>
 
+  <p class="bg-success" ng-show="showScanCompleteMessage" style="padding: 15px;"><i class="fa fa-wordpress"></i>
+ Scan for Wordpress installations complete.</p>
+</div>
+
+<div ng-show="showScanResults" class="row marketing">
+  <div class="col-xs-12 col-sm-6">
+    <h4>Installations found:</h4>
+    <ul class="list-unstyled" style="padding-left: 30px; line-height: 2em">
+      <li><i class="fa fa-folder-open"></i> path 1</li>
+      <li><i class="fa fa-wordpress"></i> path 2</li>
+      <li><i class="fa fa-wordpress"></i> path 3  <span class="label label-success">NEW</span></li>
+    </ul>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <h4>Paths scanned:</h4>
+    <ul class="list-unstyled" style="padding-left: 30px; line-height: 2em">
+      <li ng-repeat="path in paths"><i class="fa fa-folder"></i> {{path}}</li>
+    </ul>
+  </div>
 </div>

@@ -1,6 +1,6 @@
 <?php
 /*
-Pressbreak - sign-in logic
+Pressbreak
 Copyright (C) 2015  Garrett Grice <ggrice@gmail.com>
 
 This program is free software; you can redistribute it and/or modify
