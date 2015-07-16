@@ -50,16 +50,18 @@ pressbreakControllers.controller('NavController', ['$scope', '$location',
 
 pressbreakControllers.controller('ScanController', ['$scope', 'ScanInstallations',
   function($scope, ScanInstallations) {
-    $scope.showScanningMessage = true;
-    $scope.showScanResults = false;
-    $scope.showScanCompleteMessage = false;
+    $scope.showScanningMessage        = true;
+    $scope.showScanResults            = false;
+    $scope.showScanCompleteMessage    = false;
+    $scope.showErrorMessage           = false;
 
     var scanResults = ScanInstallations.query(function() {
       /* scan complete */
-      $scope.showScanningMessage = false;     // visual indicators
-      $scope.showScanCompleteMessage = true;
-      $scope.showScanResults = true;
-
+      $scope.showScanningMessage      = false;     // visual indicators
+      $scope.showScanCompleteMessage  = true;
+      $scope.showScanResults          = true;
+      $scope.showErrorMessage         = scanResults['hasErrors'];
+      $scope.errors                   = scanResults['errors'];
       $scope.paths = scanResults['paths'];
 
     });

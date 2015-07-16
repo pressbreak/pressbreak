@@ -23,15 +23,11 @@ require_once('lib/helpers.php');
 Helper::initPage();
 
 function scanPathForWordpress($path) {
-  try {
-    $directory = new RecursiveDirectoryIterator($path);
+    $directory = new RecursiveDirectoryIterator(realpath($path));
     $iterator = new RecursiveIteratorIterator($directory);
-    $regex = new RegexIterator($iterator, '/^wp-config\.php$/i', RecursiveRegexIterator::GET_MATCH);
+    $regex = new RegexIterator($iterator, '/wp-config\.php$/i', RecursiveRegexIterator::GET_MATCH);
 
     return iterator_to_array($regex);
-  } catch (Exception $e) {
-    return null;
-  }
 }
 
 
@@ -52,14 +48,18 @@ $returnResult['errors'] = array();
 $scanArray = array();
 foreach ($scanPaths as $path) {
   $scanArray[$path] = array();
-  $rr = scanPathForWordpress($path);
-  if($rr == null) {
-    // Error occured
+  try {
+    $rr = scanPathForWordpress($path);
+    if($rr)
+      $scanArray[$path] = $rr;
+    else {
+      $scanArray[$path] = array();
+    }
+
+  } catch (Exception $e) {
     $scanArray[$path] = array();
     $returnResult['hasErrors'] = true;
-    $returnResult['errors'][] = "Error opening " . $path;
-  } else {
-    $scanArray[$path] = scanPathForWordpress($path);
+    $returnResult['errors'][] = $e->getMessage();
   }
   // $scanArray[$path] = iterator_to_array(scanPathForWordpress($path));
 }

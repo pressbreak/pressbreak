@@ -1,9 +1,17 @@
 <div class="row marketing">
-
   <p class="bg-primary" ng-show="showScanningMessage" style="padding: 15px;"><i class="fa fa-refresh fa-spin"></i> Now scanning configured paths for Wordpress installations...</p>
 
-  <p class="bg-success" ng-show="showScanCompleteMessage" style="padding: 15px;"><i class="fa fa-wordpress"></i>
+  <p class="bg-success" ng-show="showScanCompleteMessage" style="padding: 15px;"><i class="fa fa-check"></i>
  Scan for Wordpress installations complete.</p>
+  <div class="bg-danger" ng-show="showErrorMessage" style="padding: 15px;">
+    <p>
+      <i class="fa fa-exclamation-triangle"></i> The following errors occured:
+    </p>
+    <ul>
+      <li ng-repeat="error in errors">{{error}}</li>
+    </ul>
+  </p>
+
 </div>
 
 <div ng-show="showScanResults" class="row marketing">
