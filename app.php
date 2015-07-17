@@ -45,9 +45,9 @@ Helper::initPage();
     <div class="header clearfix">
       <nav ng-controller="NavController">
         <ul class="nav nav-pills pull-right">
-          <li role="presentation" ng-class="getClass('/sites')"><a href="#/">Home</a></li>
-          <li role="presentation" ng-class="getClass('/sites/scan')"><a href="#/sites/scan">Scan for Sites</a></li>
-          <li role="presentation"><a href="signout.php">Sign Out</a></li>
+          <li role="presentation" ng-class="getClass('/sites')"><a href="#/"><i class="fa fa-home"></i> Home</a></li>
+          <li role="presentation" ng-class="getClass('/sites/scan')"><a href="#/sites/scan"><i class="fa fa-refresh"></i> Scan for Sites</a></li>
+          <li role="presentation"><a href="signout.php"><i class="fa fa-sign-out"></i> Sign Out</a></li>
         </ul>
       </nav>
       <h3 class="text-muted"><img src="img/hand-crush-cut-force-from-above-sml.gif" height="32"/>Pressbreak</h3>
