@@ -22,21 +22,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 require_once('lib/helpers.php');
 Helper::initPage();
 
-function scanPathForWordpress($path) {
-    $directory = new RecursiveDirectoryIterator(realpath($path));
-    $iterator = new RecursiveIteratorIterator($directory);
-    $regex = new RegexIterator($iterator, '/wp-config\.php$/i', RecursiveRegexIterator::GET_MATCH);
-
-    $fullPathArray =  iterator_to_array($regex);
-    $pathOnlyArray = array();
-    foreach ($fullPathArray as $key => $value) {
-      $pathOnlyArray[] = dirname(realpath($key));
-    }
-
-    return $pathOnlyArray;
-}
-
 require_once('lib/config.php');
+require_once('lib/wordpress.php');
 header('Content-Type: application/json');
 
 $config = new PressbreakConfig();
@@ -53,7 +40,7 @@ $scanArray = array();
 foreach ($scanPaths as $path) {
   $scanArray[$path] = array();
   try {
-    $rr = scanPathForWordpress($path);
+    $rr = Wordpress::scanPathForWordpress($path);
     if($rr)
       $scanArray[$path] = $rr;
     else {
