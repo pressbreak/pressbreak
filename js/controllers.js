@@ -64,6 +64,10 @@ pressbreakControllers.controller('ScanController', ['$scope', 'ScanInstallations
       $scope.errors                   = scanResults['errors'];
       $scope.paths = scanResults['paths'];
 
+      $scope.installationsFound = scanResults['installationsFound'];
+
+      
+
     });
 
     // $scope.showScanCompleteMessage = true;
