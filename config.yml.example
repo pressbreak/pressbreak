@@ -4,4 +4,7 @@ users:
 
   - username: testuser2
     password: testpassword2
-    
+
+scan_paths:
+  - /home/testuser/public_html
+  - /var/www/html
