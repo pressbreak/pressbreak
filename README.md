@@ -1,3 +1,5 @@
+*Note:* Until the primary alpha release, see the **develop** branch for latest everything.
+
 # Pressbreak
 The Wordpress deployment platform
 
