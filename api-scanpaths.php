@@ -27,11 +27,15 @@ function scanPathForWordpress($path) {
     $iterator = new RecursiveIteratorIterator($directory);
     $regex = new RegexIterator($iterator, '/wp-config\.php$/i', RecursiveRegexIterator::GET_MATCH);
 
-    return iterator_to_array($regex);
+    $fullPathArray =  iterator_to_array($regex);
+    $pathOnlyArray = array();
+    foreach ($fullPathArray as $key => $value) {
+      $pathOnlyArray[] = dirname(realpath($key));
+    }
+
+    return $pathOnlyArray;
 }
 
-
-sleep(1);
 require_once('lib/config.php');
 header('Content-Type: application/json');
 

@@ -15,16 +15,41 @@
 </div>
 
 <div ng-show="showScanResults" class="row marketing">
-  <div class="col-xs-12 col-sm-12">
+  <div class="col-xs-12 col-sm-6">
     <h4>Installations found:</h4>
     <ul class="list-unstyled" style="padding-left: 15px; line-height: 2em">
-      <li ng-repeat="(path, results) in installationsFound"><i class="fa fa-folder-open"></i> {{path}}
-        <ul>
-          <li ng-repeat="(fullPath, fileName) in results">
-            <i class="fa fa-wordpress"></i> {{fullPath}}
+      <li ng-repeat="(path, results) in installationsFound">
+        <i class="fa fa-folder-open"></i> {{path}}
+        <ul class="list-unstyled">
+          <li ng-repeat="path in results" style="padding-left: 15px;">
+            <i class="fa fa-wordpress"></i> {{path}}
           </li>
       </li>
-
     </ul>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">Scan Statistics:</div>
+      <table class="table">
+        <tr>
+          <td><i class="fa fa-certificate"></i> New sites found</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td><i class="fa fa-server"></i> Total sites found</td>
+          <td>{{installCount}}</td>
+        </tr>
+        <tr>
+          <td><i class="fa fa-clock-o"></i> Elapsed time</td>
+          <td>{{scanTime}} seconds</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="col-xs-12">
+    <hr/>
+    <p>
+      <a href="#/" class="btn btn-success" role="button"><i class="fa fa-home"></i> Back to site list</a>
+    </p>
   </div>
 </div>

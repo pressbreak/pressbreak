@@ -55,8 +55,12 @@ pressbreakControllers.controller('ScanController', ['$scope', 'ScanInstallations
     $scope.showScanCompleteMessage    = false;
     $scope.showErrorMessage           = false;
 
+    var scanStartTime = new Date();
+    var scanEndTime   = null;
     var scanResults = ScanInstallations.query(function() {
       /* scan complete */
+      scanEndTime = new Date();
+      $scope.scanTime = ((scanEndTime.getTime() - scanStartTime.getTime()) / 1000)
       $scope.showScanningMessage      = false;     // visual indicators
       $scope.showScanCompleteMessage  = true;
       $scope.showScanResults          = true;
@@ -65,9 +69,10 @@ pressbreakControllers.controller('ScanController', ['$scope', 'ScanInstallations
       $scope.paths = scanResults['paths'];
 
       $scope.installationsFound = scanResults['installationsFound'];
-
-      
-
+      $scope.installCount = 0;
+      for (var key in scanResults['installationsFound']) {
+        $scope.installCount += scanResults['installationsFound'][key].length;
+      }
     });
 
     // $scope.showScanCompleteMessage = true;
