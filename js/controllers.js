@@ -71,8 +71,17 @@ pressbreakControllers.controller('ScanController', ['$scope', 'ScanInstallations
       $scope.installationsFound = scanResults['installationsFound'];
       $scope.installCount = 0;
       for (var key in scanResults['installationsFound']) {
-        $scope.installCount += scanResults['installationsFound'][key].length;
+          $scope.installCount += Object.keys(scanResults['installationsFound'][key]).length;
       }
+
+      $scope.newSitesFound = 0;
+      for (var key in scanResults['installationsFound']) {
+        for(var site in scanResults['installationsFound'][key]) {
+          if(site)
+            $scope.newSitesFound++;
+        }
+      }
+
     });
 
     // $scope.showScanCompleteMessage = true;

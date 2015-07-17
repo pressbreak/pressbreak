@@ -24,12 +24,17 @@ Helper::initPage();
 
 require_once('lib/config.php');
 require_once('lib/wordpress.php');
+require_once('lib/sitesdata.php');
 header('Content-Type: application/json');
 
 $config = new PressbreakConfig();
 $config->open('config.yml');
 
 $scanPaths = $config->getScanPaths();
+
+$siteData = new SiteFile('data/sites.json');
+$siteData->open();
+
 
 $returnResult = array();
 $returnResult['paths'] = $scanPaths;
@@ -41,8 +46,14 @@ foreach ($scanPaths as $path) {
   $scanArray[$path] = array();
   try {
     $rr = Wordpress::scanPathForWordpress($path);
-    if($rr)
-      $scanArray[$path] = $rr;
+    if($rr) {
+      /* check which sites are new finds */
+      $resultsWithNew = array();
+      foreach ($rr as $p) {
+        $resultsWithNew[$p] = ($siteData->getSite($p) == null);
+      }
+      $scanArray[$path] = $resultsWithNew;
+    }
     else {
       $scanArray[$path] = array();
     }

@@ -18,12 +18,12 @@
   <hr/>
   <div class="col-xs-12 col-sm-6">
     <h4>Installations found:</h4>
-    <ul class="list-unstyled" style="padding-left: 15px; line-height: 2em">
+    <ul class="list-unstyled" style="line-height: 2em">
       <li ng-repeat="(path, results) in installationsFound">
         <i class="fa fa-folder-open"></i> {{path}}
         <ul class="list-unstyled">
-          <li ng-repeat="path in results" style="padding-left: 15px;">
-            <i class="fa fa-wordpress"></i> {{path}}
+          <li ng-repeat="(sitePath, isNew) in results" style="padding-left: 15px;">
+            <i class="fa fa-wordpress"></i> {{sitePath}} <span class="label label-success" ng-if="isNew == true">New</span>
           </li>
       </li>
     </ul>
@@ -34,7 +34,7 @@
       <table class="table">
         <tr>
           <td><i class="fa fa-certificate"></i> New sites found</td>
-          <td>--</td>
+          <td>{{newSitesFound}}</td>
         </tr>
         <tr>
           <td><i class="fa fa-server"></i> Total sites found</td>
