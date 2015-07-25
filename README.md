@@ -1,3 +1,5 @@
+**NOTE:** This is still in development. Most things don't work yet.
+
 # Pressbreak
 A simple Wordpress deployment platform
 
